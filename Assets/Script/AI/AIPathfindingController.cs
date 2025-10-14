@@ -66,7 +66,7 @@ public class AIPathfindingController : AIComponents
         _realPath.Clear();
         pathIndex = 0;
     }
-
+     
     private IEnumerator ProcessUpdate()
     {
         while (owner.currentState != STATE.NONE)

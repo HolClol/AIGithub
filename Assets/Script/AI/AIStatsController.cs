@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,9 +70,39 @@ public class AIStatsController : AIComponents
         return WorkTasks.Count;
     }
 
+    // Get tasks that was given from the AI, prefer tasks that are closer distance or almost finished
     public WorkTaskClass GetTask()
     {
-        return WorkTasks[UnityEngine.Random.Range(0, WorkTasks.Count - 1)];
+        int coinroll = Random.Range(1, 2);
+        float highestscore = 0f;
+        float nearestdist = 200f;
+        WorkTaskClass selectedtask = WorkTasks[Random.Range(0, WorkTasks.Count - 1)];
+        foreach (WorkTaskClass task in WorkTasks) 
+        {
+            Vector3 taskpos = task.Point.gameObject.transform.position;
+            float score = task.WorkPlaceSpot.TaskProgress;
+            float dist = Vector3.Distance(owner.transform.position, taskpos);
+
+            
+            if (coinroll == 1)
+            {
+                if (task.WorkPlaceSpot.TaskProgress > 0)
+                {
+                    selectedtask = task;
+                    highestscore = score;
+                }
+            }
+            else if (coinroll == 2)
+            {
+                if (dist < nearestdist)
+                {
+                    selectedtask = task;
+                    nearestdist = dist;
+                }
+            }
+            
+        }
+        return selectedtask;
     }
 
     public void TaskComplete(WorkTaskClass task)
