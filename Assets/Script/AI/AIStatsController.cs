@@ -70,43 +70,51 @@ public class AIStatsController : AIComponents
         return WorkTasks.Count;
     }
 
-    // Get tasks that was given from the AI, prefer tasks that are closer distance or almost finished
+    // Get tasks that was given from the AI
+    // Tasks chosen are priorized by distance, work completed and bonus timer it apply
     public WorkTaskClass GetTask()
     {
-        int coinroll = Random.Range(1, 2);
+        int priorityroll = 0;
         float highestscore = 0f;
         float nearestdist = 200f;
+        float highestbonus = 0f;
         WorkTaskClass selectedtask = WorkTasks[Random.Range(0, WorkTasks.Count - 1)];
         foreach (WorkTaskClass task in WorkTasks) 
         {
+            int currentprior = 0;
             Vector3 taskpos = task.Point.gameObject.transform.position;
             float score = task.WorkPlaceSpot.TaskProgress;
             float dist = Vector3.Distance(owner.transform.position, taskpos);
+            float bonustime = task.WorkPlaceSpot.BonusTimer;
 
-            
-            if (coinroll == 1)
+            if (score > highestscore)
             {
-                if (task.WorkPlaceSpot.TaskProgress > 0)
-                {
-                    selectedtask = task;
-                    highestscore = score;
-                }
+                highestscore = score;
+                currentprior++;
             }
-            else if (coinroll == 2)
+            if (dist < nearestdist)
             {
-                if (dist < nearestdist)
-                {
-                    selectedtask = task;
-                    nearestdist = dist;
-                }
+                nearestdist = dist;
+                currentprior++;
+            }
+            if (bonustime > highestbonus)
+            {
+                highestbonus = bonustime;
+                currentprior++;
             }
             
+            if (currentprior > priorityroll)
+            {
+                priorityroll = currentprior;
+                selectedtask = task;
+            }
         }
         return selectedtask;
     }
 
     public void TaskComplete(WorkTaskClass task)
     {
+        GameManager.Instance.IncreaseTimer(task.WorkPlaceSpot.BonusTimer);
         WorkTasks.Remove(task);
     }
     #endregion

@@ -14747,6 +14747,38 @@ PrefabInstance:
       propertyPath: AisTable.Array.data[3]
       value: 
       objectReference: {fileID: 1091136219}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[0].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[1].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[2].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[3].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[4].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[5].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[6].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124737801431383639, guid: 381fae897c1462944891c79314475f83, type: 3}
+      propertyPath: WorkTasksTable.Array.data[7].TaskRequired
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9170258487057794790, guid: 381fae897c1462944891c79314475f83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private List<WorkTaskClass> tasksGiven = new List<WorkTaskClass>();
     private List<Waypoint_Endpoint> endPoints = new List<Waypoint_Endpoint>();
 
-    private float timer = 240f;
+    private float timer = 150f;
     private int completedCount;
 
     private void Start()
@@ -47,6 +47,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncreaseTimer(float time)
+    {
+        timer += time;
+        Debug.Log("Increased Time: " + time);
+        Debug.Log("Current Timer: " + timer);
+    }
+
     public CharacteristicTraits GetRandomTrait()
     {
         return TraitsTable[Random.Range(0, TraitsTable.Count - 1)];
@@ -72,7 +79,10 @@ public class GameManager : MonoBehaviour
             var index = Random.Range(0, endPoints.Count);
             task.Point = endPoints[index];
             task.WorkPlaceSpot = endPoints[index].controller;
-            endPoints[index].controller.TaskRequiredAmount = task.TaskRequired;
+
+            int multi = Random.Range(1, 4);
+            endPoints[index].controller.BonusTimer = multi * 10f;
+            endPoints[index].controller.TaskRequiredAmount = task.TaskRequired + (multi * 10f);
             endPoints.Remove(endPoints[index]);
         }
     }

@@ -9,6 +9,7 @@ public class WorkPlaceController : MonoBehaviour, I_WorkTask
     public bool Completed;
     public float TaskRequiredAmount;
     public float TaskProgress;
+    public float BonusTimer;
 
     [SerializeField] private List<AIPhaseController> workers =  new List<AIPhaseController>();
     private int spotsTaken;

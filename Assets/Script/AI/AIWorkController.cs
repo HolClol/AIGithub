@@ -68,7 +68,7 @@ public class AIWorkController : AIComponents
 
     private float GetDelayTimer()
     {
-        float random = Random.Range(12f, 15f);
+        float random = Random.Range(14f, 18f);
         float count = Mathf.Max(random - AIWorkData.WorkSpeed, 1f);
         return count;
     }
