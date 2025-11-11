@@ -114,7 +114,6 @@ public class AIStatsController : AIComponents
 
     public void TaskComplete(WorkTaskClass task)
     {
-        GameManager.Instance.IncreaseTimer(task.WorkPlaceSpot.BonusTimer);
         WorkTasks.Remove(task);
     }
     #endregion

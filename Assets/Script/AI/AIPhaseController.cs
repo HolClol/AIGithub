@@ -110,7 +110,6 @@ public class AIPhaseController : MonoBehaviour
                 WorkController.currentTask = null;
                 if (TasksCount <= 0)
                 {
-                    GameManager.Instance.AIComplete();
                     currentState = STATE.NONE;
                     stop = true;
                     break;

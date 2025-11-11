@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<CharacteristicTraits> TraitsTable;
     public List<WorkTaskClass> WorkTasksTable;
     public List<AIPhaseController> AisTable;
+    public int TasksGiven = 0;
 
     private List<WorkTaskClass> tasksGiven = new List<WorkTaskClass>();
     private List<Waypoint_Endpoint> endPoints = new List<Waypoint_Endpoint>();
@@ -35,10 +36,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TimerStart());
     }
 
-    public void AIComplete()
+    public void TaskComplete()
     {
         completedCount++;
-        if (completedCount >= AisTable.Count)
+        if (completedCount >= TasksGiven)
         {
             Debug.Log("Game Win");
         }
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UpdateTimer(timer);
     }
 
+    #region GameGeneration
     public CharacteristicTraits GetRandomTrait()
     {
         return TraitsTable[Random.Range(0, TraitsTable.Count - 1)];
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         var task = tasksGiven[Random.Range(0, tasksGiven.Count)];
         tasksGiven.Remove(task); // Task will be removed to avoid duplicates
+        TasksGiven++;
         return task;
     }
 
@@ -94,4 +97,5 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Game lose");
     }
+    #endregion
 }

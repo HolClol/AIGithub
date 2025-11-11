@@ -56,6 +56,8 @@ public class WorkPlaceController : MonoBehaviour, I_WorkTask
         {
             list[i].CompletedTask();
         }
+        GameManager.Instance.TaskComplete();
+        GameManager.Instance.IncreaseTimer(BonusTimer);
         Completed = true;
     }
 }
