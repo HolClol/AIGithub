@@ -11,14 +11,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(Instance);
+        Instance = this;
     }
 
     public void UpdateTimer(float timer)
     {
-        txtTimer.text = timer.ToString();
+        string txt = FunctionManager.Instance.FormatSecondToStringTime(timer);
+        txtTimer.text = txt;
     }
 }

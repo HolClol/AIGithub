@@ -18,10 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(Instance);
+        Instance = this;
 
         WaypointGraph.INIT();
 
@@ -50,8 +47,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseTimer(float time)
     {
         timer += time;
-        Debug.Log("Increased Time: " + time);
-        Debug.Log("Current Timer: " + timer);
+        UIManager.Instance.UpdateTimer(timer);
     }
 
     public CharacteristicTraits GetRandomTrait()
@@ -92,6 +88,7 @@ public class GameManager : MonoBehaviour
         while (timer > 0f)
         {
             timer -= 1f;
+            UIManager.Instance.UpdateTimer(timer);
             yield return new WaitForSeconds(1f);
         }
 
