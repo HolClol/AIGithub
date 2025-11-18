@@ -71,7 +71,7 @@ public class AIStatsController : AIComponents
     }
 
     // Get tasks that was given from the AI
-    // Tasks chosen are priorized by distance, work completed and bonus timer it apply
+    // Tasks chosen are priorized using score increment calculation;
     public WorkTaskClass GetTask()
     {
         int priorityroll = 0;
@@ -87,16 +87,20 @@ public class AIStatsController : AIComponents
             float dist = Vector3.Distance(owner.transform.position, taskpos);
             float bonustime = task.WorkPlaceSpot.BonusTimer;
 
+            // Highest task progress
             if (score > highestscore)
             {
                 highestscore = score;
                 currentprior++;
             }
+            // Nearest task from AI
             if (dist < nearestdist)
             {
                 nearestdist = dist;
                 currentprior++;
             }
+            // Highest time reward
+
             if (bonustime > highestbonus)
             {
                 highestbonus = bonustime;
