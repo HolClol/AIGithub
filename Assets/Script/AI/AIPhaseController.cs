@@ -132,7 +132,7 @@ public class AIPhaseController : MonoBehaviour
                 PathfindingController.ClearPathing();
                 yield return new WaitForSeconds(2f);
                 DisableCoroutine();
-                PathfindingController.StartPathing(GameManager.Instance.GetWanderPoint());
+                PathfindingController.StartPathing(GameManager.Instance.GetWanderPoint(gameObject));
                 break;
 
             default:

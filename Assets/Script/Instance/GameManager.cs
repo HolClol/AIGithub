@@ -65,10 +65,21 @@ public class GameManager : MonoBehaviour
         return task;
     }
 
-    public Waypoint_Wanderpoint GetWanderPoint()
+    public Waypoint_Wanderpoint GetWanderPoint(GameObject owner)
     {
-        var point = WaypointGraph.Wanderpoints[Random.Range(0, WaypointGraph.Wanderpoints.Count)];
-        return point;
+        float closestdist = 200f;
+        Waypoint_Wanderpoint chosenpoint = WaypointGraph.Wanderpoints[Random.Range(0, WaypointGraph.Wanderpoints.Count)]; //Set to random at first
+        //Return the closest wander spot
+        foreach (var pos in WaypointGraph.Wanderpoints)
+        {
+            float dist = Vector3.Distance(pos.gameObject.transform.position, owner.transform.position);
+            if (dist < closestdist)
+            {
+                closestdist = dist;
+                chosenpoint = pos;
+            }
+        }
+        return chosenpoint;
     }
 
     private void AssignEndpointForTask()
