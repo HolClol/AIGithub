@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 1, g: 0.74306697, b: 0.28490567, a: 1}
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -326,9 +326,9 @@ MonoBehaviour:
   - {fileID: 586406242277326162}
   - {fileID: 8266632080659734908}
   - {fileID: 3199328408280256845}
-  workTaskClass:
-    Task: 0
-    Point: {fileID: 0}
-    TaskRequired: 0
-    TaskProgress: 0
-    TaskPositions: []
+  ProgressVisual: {fileID: 92390823468754181}
+  Completed: 0
+  TaskRequiredAmount: 0
+  TaskProgress: 0
+  BonusTimer: 0
+  workers: []

@@ -6,6 +6,7 @@ public class WorkPlaceController : MonoBehaviour, I_WorkTask
 {
     public List<Transform> spots = new List<Transform>();
 
+    public SpriteRenderer ProgressVisual; //Goal color FFBD49
     public bool Completed;
     public float TaskRequiredAmount;
     public float TaskProgress;
@@ -13,6 +14,14 @@ public class WorkPlaceController : MonoBehaviour, I_WorkTask
 
     [SerializeField] private List<AIPhaseController> workers =  new List<AIPhaseController>();
     private int spotsTaken;
+
+    private void SetColor()
+    {
+        float i = TaskProgress / TaskRequiredAmount;
+        Color start = new Color(137f / 255f, 137f / 255f, 137f / 255f);
+        Color end = new Color(255f / 255f, 189f / 255f, 73f / 255f);
+        ProgressVisual.color = Color.Lerp(start, end, i);
+    }
 
     public void AssignWorker(AIPhaseController controller, bool value)
     {
@@ -43,6 +52,7 @@ public class WorkPlaceController : MonoBehaviour, I_WorkTask
     public void PerformTask(float value)
     {
         TaskProgress += value;
+        SetColor();
         if (TaskProgress >= TaskRequiredAmount)
         {
             var list = new List<AIPhaseController>(workers);
