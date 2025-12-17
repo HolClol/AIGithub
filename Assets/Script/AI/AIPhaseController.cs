@@ -89,6 +89,7 @@ public class AIPhaseController : MonoBehaviour
                 DisableCoroutine();
                 if (AffectMood <= moodbreakpoint)
                 {
+                    AILogger.Log(gameObject.name, "MOOD DOWN");
                     currentState = STATE.WANDER;
                     break;
                 }

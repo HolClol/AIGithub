@@ -113,12 +113,13 @@ public class AIStatsController : AIComponents
                 selectedtask = task;
             }
         }
+        AILogger.Log(owner.name, "TASK ASSIGN: " + selectedtask.Task + " / PRIOR BONUS: " + priorityroll);
         return selectedtask;
     }
 
     public void TaskComplete(WorkTaskClass task)
     {
-        WorkTasks.Remove(task);
+        AILogger.Log(owner.name, "TASK COMPLETE: " + task);
     }
     #endregion
 

@@ -44,7 +44,9 @@ public class AIWorkController : AIComponents
             yield return new WaitForSeconds(GetDelayTimer());
             // Work Abandon
             if (FunctionManager.Instance.ChanceGenerator(AIWorkData.WorkAbandonChance))
+            {
                 owner.currentState = STATE.ABANDON;
+            }         
 
             // Work Bonus
             if (FunctionManager.Instance.ChanceGenerator(AIWorkData.WorkBonusChance))
