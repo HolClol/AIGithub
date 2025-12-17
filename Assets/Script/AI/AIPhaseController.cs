@@ -39,6 +39,7 @@ public class AIPhaseController : MonoBehaviour
                 if (_stateCheck == null)
                 {
                     _stateCheck = StartCoroutine(CheckState());
+                    AILogger.Log(gameObject.name, "STATE CHANGE: " + value);
                 }
             }
         }
