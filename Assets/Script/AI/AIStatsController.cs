@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AIStatsController : AIComponents
 {
-    private readonly int[] thresholds = { 80, 60, 40, 20 };
+    private readonly int[] thresholds = { 80, 60, 40, 20 }; // threshold each time stats will drop
 
     public AiStatsClass AIStats;
     [Header("In Game Stats Display")]
@@ -16,7 +16,7 @@ public class AIStatsController : AIComponents
         set => mood = Mathf.Clamp(value, 0, 100);
     }
 
-    private AiStatsClass BaseAIStats = new AiStatsClass { }; // For when stats manipulation occurs, this object is used to reset stats to normal
+    private AiStatsClass BaseAIStats = new AiStatsClass { }; // For when stats manipulation occurs, this variable is used to reset stats to normal
 
     public override bool INIT(AIPhaseController owner)
     {
@@ -106,7 +106,7 @@ public class AIStatsController : AIComponents
                 highestbonus = bonustime;
                 currentprior++;
             }
-            
+            // Choose the task based on the highest priority roll
             if (currentprior > priorityroll)
             {
                 priorityroll = currentprior;
@@ -123,6 +123,7 @@ public class AIStatsController : AIComponents
     }
     #endregion
 
+    // Reduce stats when mood falls under threshold
     public void MoodAffect()
     {
         int crossed = 0;

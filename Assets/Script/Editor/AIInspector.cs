@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Reflection;
+﻿using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(AIPhaseController))]  
 public class AIInspector : Editor
@@ -47,7 +48,8 @@ public class AIInspector : Editor
 
         if (mono.StatsController != null)
         {
-            var statData = mono.StatsController.AIStats;  
+            EditorGUILayout.LabelField("Current Mood", mono.StatsController.mood.ToString());
+            var statData = mono.StatsController.AIStats;
             if (statData != null)
             {
                 var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;

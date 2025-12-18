@@ -38,6 +38,7 @@ public class AIPhaseController : MonoBehaviour
                 state = value;
                 if (_stateCheck == null)
                 {
+                    // Call AI function to activate correct state functions
                     _stateCheck = StartCoroutine(CheckState());
                     AILogger.Log(gameObject.name, "STATE CHANGE: " + value);
                 }
@@ -79,9 +80,11 @@ public class AIPhaseController : MonoBehaviour
         currentState = STATE.IDLE;
     }
 
+    // Check which state the AI is in and respond to it
+    // Core fucntion that make AI runs the whole operation
     private IEnumerator CheckState()
     {
-        if (stop) yield return null;
+        if (stop) yield return null; 
         switch (currentState)
         {
             case STATE.IDLE:
@@ -142,6 +145,7 @@ public class AIPhaseController : MonoBehaviour
         }
     }
 
+    // If mood goes below certain random value, it will force the AI to either abandon (if working) or wander (if idle)
     private void MoodCheck(int mood)
     {
         moodbreakpoint = Random.Range(5, 20);
@@ -178,6 +182,7 @@ public class AIPhaseController : MonoBehaviour
 
     public void CompletedTask()
     {
+        AILogger.Log(gameObject.name, "STATE CHANGE: ALL TASKS COMPLETE");
         currentState = STATE.COMPLETE;
     }
 
