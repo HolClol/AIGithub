@@ -191,6 +191,15 @@ public class AIPhaseController : MonoBehaviour
 
     }
 
+    // Return random task from AI
+    public WorkTaskClass GetWorkTask() 
+    {
+        if (StatsController.WorkTasks.Count <= 0) return null;
+
+        WorkTaskClass task = StatsController.WorkTasks[StatsController.WorkTasks.Count];
+        return task;
+    }
+
     public GeneralData GetGeneralData()
     {
         GeneralData generalData = StatsController.AIStats.GetGeneralData();
